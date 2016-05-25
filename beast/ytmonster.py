@@ -88,13 +88,15 @@ class YTMonster(object):
     else:
       print("'" + username + "' failed to login with the credentials given.")
       self.online = False
+    return self.online
 
   def logout(self):
-    """ Return whether or not a user has successfully logged out. """
+    """ Return that a user has successfully logged out. """
     self.session.get("http://www.ytmonster.net/logout")
     self.session.headers.update({ 'referer' : None })
     self.online = False
     print("Successfully logged out '" + self.username + "'.")
+    return True
 
   def get_limit(self):
     return self.limit
